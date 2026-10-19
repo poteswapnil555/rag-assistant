@@ -134,10 +134,10 @@ depend on the LLM's `found: false`. The threshold has not been tuned, to avoid f
 - Only one document is indexed per run, and the index is rebuilt each run (a few seconds for a 48-page PDF).
 - The evaluation set is small (16 questions), written by the author, and keyword matching is a rough correctness test; results apply to that set only.
 - On the live run, 3 of 11 answerable questions were refused (false refusals); the similarity threshold was deliberately not tuned and the run was not repeated, so this behaviour is reported as-is and the numbers may be unstable across runs.
-- The Docker image has not been built or verified yet.
+- The Docker image builds and the mock evaluation runs inside it (`docker run --rm --entrypoint python rag-assistant -m rag_assistant.evaluate --mock`). This is a plumbing check with a fake model, not a live run and not an accuracy measurement.
 - Only English text was tried.
 
 ## Next steps
 - Save the retrieved chunks for refused questions in the evaluation output, then investigate the 3 false refusals (retrieval depth, chunking, prompt) and re-measure.
 - Try a re-ranker or hybrid (keyword + vector) search for the questions where the right page is not in the top 4.
-- Build and verify the Docker image; add OCR for scanned PDFs.
+- Run the live evaluation inside Docker (pass variables with `--env-file`); add OCR for scanned PDFs.
