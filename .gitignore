@@ -1,0 +1,14 @@
+.env
+*.env
+!.env.example
+.secrets/
+LocalDocs/
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+data/private/
+data/index/
+# Third-party document: downloaded by scripts/download_pdf.py, never committed
+data/sample/NIST.AI.100-1.pdf
+data/downloads/
