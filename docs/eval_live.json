@@ -1,0 +1,376 @@
+{
+  "mode": "live",
+  "questions": 16,
+  "overall_accuracy": 0.8125,
+  "answerable_questions": 11,
+  "answered_correctly": 8,
+  "citation_on_expected_page": "8/11",
+  "false_refusals": 3,
+  "wrong_answers": 0,
+  "unanswerable_questions": 5,
+  "correctly_refused": 5,
+  "wrongly_answered": 0,
+  "llm_or_retrieval_errors": 0,
+  "pdf": "NIST.AI.100-1.pdf",
+  "chunks": 180,
+  "threshold": 0.35,
+  "details": [
+    {
+      "id": "n01",
+      "question": "What are the four functions of the AI RMF Core?",
+      "answerable": true,
+      "correct": true,
+      "found": true,
+      "answer": "The four functions of the AI RMF Core are GOVERN, MAP, MEASURE, and MANAGE.",
+      "reason": "answered",
+      "top_score": 0.7408493757247925,
+      "expected_keywords": [
+        "govern",
+        "map",
+        "measure",
+        "manage"
+      ],
+      "expected_pages": [
+        25
+      ],
+      "citations": [
+        {
+          "page": 25,
+          "chunk": 90,
+          "score": 0.7408
+        },
+        {
+          "page": 25,
+          "chunk": 91,
+          "score": 0.6608
+        }
+      ],
+      "citation_on_expected_page": true,
+      "error": null
+    },
+    {
+      "id": "n02",
+      "question": "What are the characteristics of trustworthy AI systems?",
+      "answerable": true,
+      "correct": true,
+      "found": true,
+      "answer": "The characteristics of trustworthy AI systems include being valid and reliable, safe, secure and resilient, accountable and transparent, explainable and interpretable, privacy-enhanced, and fair with harmful bias managed.",
+      "reason": "answered",
+      "top_score": 0.7746270895004272,
+      "expected_keywords": [
+        "valid|reliab",
+        "safe",
+        "explainab|interpretab",
+        "privacy",
+        "fair"
+      ],
+      "expected_pages": [
+        8,
+        17
+      ],
+      "citations": [
+        {
+          "page": 17,
+          "chunk": 55,
+          "score": 0.7588
+        }
+      ],
+      "citation_on_expected_page": true,
+      "error": null
+    },
+    {
+      "id": "n03",
+      "question": "How does the AI RMF define risk?",
+      "answerable": true,
+      "correct": true,
+      "found": true,
+      "answer": "In the context of the AI RMF, risk is defined as the composite measure of an event\u2019s probability of occurring and the magnitude or degree of the consequences of that event.",
+      "reason": "answered",
+      "top_score": 0.7563573122024536,
+      "expected_keywords": [
+        "probability",
+        "magnitude"
+      ],
+      "expected_pages": [
+        9
+      ],
+      "citations": [
+        {
+          "page": 9,
+          "chunk": 23,
+          "score": 0.7564
+        }
+      ],
+      "citation_on_expected_page": true,
+      "error": null
+    },
+    {
+      "id": "n04",
+      "question": "Does the AI RMF prescribe a risk tolerance?",
+      "answerable": true,
+      "correct": true,
+      "found": true,
+      "answer": "No, the AI RMF does not prescribe risk tolerance.",
+      "reason": "answered",
+      "top_score": 0.7634159326553345,
+      "expected_keywords": [
+        "not",
+        "prescribe"
+      ],
+      "expected_pages": [
+        12
+      ],
+      "citations": [
+        {
+          "page": 12,
+          "chunk": 36,
+          "score": 0.7634
+        }
+      ],
+      "citation_on_expected_page": true,
+      "error": null
+    },
+    {
+      "id": "n05",
+      "question": "What three major categories of AI bias has NIST identified?",
+      "answerable": true,
+      "correct": true,
+      "found": true,
+      "answer": "NIST has identified three major categories of AI bias: systemic, computational and statistical, and human-cognitive.",
+      "reason": "answered",
+      "top_score": 0.7716888189315796,
+      "expected_keywords": [
+        "systemic",
+        "statistic",
+        "human"
+      ],
+      "expected_pages": [
+        23
+      ],
+      "citations": [
+        {
+          "page": 23,
+          "chunk": 84,
+          "score": 0.7717
+        }
+      ],
+      "citation_on_expected_page": true,
+      "error": null
+    },
+    {
+      "id": "n06",
+      "question": "How is accuracy defined in the framework?",
+      "answerable": true,
+      "correct": true,
+      "found": true,
+      "answer": "Accuracy is defined as the closeness of results of observations, computations, or estimates to the true values or the values accepted as being true.",
+      "reason": "answered",
+      "top_score": 0.5443553328514099,
+      "expected_keywords": [
+        "closeness",
+        "true value"
+      ],
+      "expected_pages": [
+        19
+      ],
+      "citations": [
+        {
+          "page": 19,
+          "chunk": 64,
+          "score": 0.5444
+        }
+      ],
+      "citation_on_expected_page": true,
+      "error": null
+    },
+    {
+      "id": "n07",
+      "question": "What online companion resource helps organizations use the AI RMF?",
+      "answerable": true,
+      "correct": true,
+      "found": true,
+      "answer": "The NIST AI RMF Playbook is an online companion resource designed to help organizations navigate the AI RMF and achieve its outcomes.",
+      "reason": "answered",
+      "top_score": 0.7138509154319763,
+      "expected_keywords": [
+        "playbook"
+      ],
+      "expected_pages": [
+        3,
+        8,
+        26,
+        27,
+        30,
+        34,
+        37
+      ],
+      "citations": [
+        {
+          "page": 26,
+          "chunk": 92,
+          "score": 0.7139
+        }
+      ],
+      "citation_on_expected_page": true,
+      "error": null
+    },
+    {
+      "id": "n08",
+      "question": "What does GOVERN 1.6 say?",
+      "answerable": true,
+      "correct": false,
+      "found": false,
+      "answer": "Not found in the document.",
+      "reason": "llm_said_not_found",
+      "top_score": 0.3561437129974365,
+      "expected_keywords": [
+        "inventory"
+      ],
+      "expected_pages": [
+        28
+      ],
+      "citations": [],
+      "citation_on_expected_page": null,
+      "error": null
+    },
+    {
+      "id": "n09",
+      "question": "Which question can interpretability answer about a decision made by an AI system?",
+      "answerable": true,
+      "correct": true,
+      "found": true,
+      "answer": "Interpretability can answer the question of \"why\" a decision was made by the system and its meaning or context to the user.",
+      "reason": "answered",
+      "top_score": 0.6489769816398621,
+      "expected_keywords": [
+        "why"
+      ],
+      "expected_pages": [
+        22
+      ],
+      "citations": [
+        {
+          "page": 22,
+          "chunk": 79,
+          "score": 0.5965
+        }
+      ],
+      "citation_on_expected_page": true,
+      "error": null
+    },
+    {
+      "id": "n10",
+      "question": "What should happen if an AI system presents unacceptable negative risk?",
+      "answerable": true,
+      "correct": false,
+      "found": false,
+      "answer": "Not found in the document.",
+      "reason": "llm_said_not_found",
+      "top_score": 0.7389275431632996,
+      "expected_keywords": [
+        "cease|stop|halt"
+      ],
+      "expected_pages": [
+        13
+      ],
+      "citations": [],
+      "citation_on_expected_page": null,
+      "error": null
+    },
+    {
+      "id": "n11",
+      "question": "At which lifecycle stage should risk management efforts ideally start?",
+      "answerable": true,
+      "correct": false,
+      "found": false,
+      "answer": "Not found in the document.",
+      "reason": "llm_said_not_found",
+      "top_score": 0.6396685838699341,
+      "expected_keywords": [
+        "plan and design"
+      ],
+      "expected_pages": [
+        5,
+        15
+      ],
+      "citations": [],
+      "citation_on_expected_page": null,
+      "error": null
+    },
+    {
+      "id": "n12",
+      "question": "What GPU model does the framework recommend for training AI models?",
+      "answerable": false,
+      "correct": true,
+      "found": false,
+      "answer": "Not found in the document.",
+      "reason": "llm_said_not_found",
+      "top_score": 0.38963672518730164,
+      "expected_keywords": null,
+      "expected_pages": null,
+      "citations": [],
+      "citation_on_expected_page": null,
+      "error": null
+    },
+    {
+      "id": "n13",
+      "question": "What was OpenAI's revenue in 2023?",
+      "answerable": false,
+      "correct": true,
+      "found": false,
+      "answer": "Not found in the document.",
+      "reason": "below_threshold",
+      "top_score": 0.3032078146934509,
+      "expected_keywords": null,
+      "expected_pages": null,
+      "citations": [],
+      "citation_on_expected_page": null,
+      "error": null
+    },
+    {
+      "id": "n14",
+      "question": "Which programming language should be used to implement the AI RMF?",
+      "answerable": false,
+      "correct": true,
+      "found": false,
+      "answer": "Not found in the document.",
+      "reason": "llm_said_not_found",
+      "top_score": 0.6145957708358765,
+      "expected_keywords": null,
+      "expected_pages": null,
+      "citations": [],
+      "citation_on_expected_page": null,
+      "error": null
+    },
+    {
+      "id": "n15",
+      "question": "What is the phone number of the NIST help desk?",
+      "answerable": false,
+      "correct": true,
+      "found": false,
+      "answer": "Not found in the document.",
+      "reason": "llm_said_not_found",
+      "top_score": 0.36271756887435913,
+      "expected_keywords": null,
+      "expected_pages": null,
+      "citations": [],
+      "citation_on_expected_page": null,
+      "error": null
+    },
+    {
+      "id": "n16",
+      "question": "Who won the 2022 FIFA World Cup?",
+      "answerable": false,
+      "correct": true,
+      "found": false,
+      "answer": "Not found in the document.",
+      "reason": "below_threshold",
+      "top_score": 0.11339404433965683,
+      "expected_keywords": null,
+      "expected_pages": null,
+      "citations": [],
+      "citation_on_expected_page": null,
+      "error": null
+    }
+  ]
+}

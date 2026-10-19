@@ -91,17 +91,35 @@ summary plus per-question details (answer, citations, similarity, reason).
 - **Swappable LLM:** OpenAI-compatible or Azure OpenAI (key or sign-in) through environment variables only; no secret is read from a file.
 
 ## Results
-Live LLM results on the NIST questions (`eval/questions_nist.json`: 11 answerable + 5 not in the document):
+**Live run:** local embeddings (`all-MiniLM-L6-v2`), LLM `gemini-3.1-flash-lite` via an OpenAI-compatible endpoint, the NIST AI 100-1 PDF
+(180 chunks), similarity threshold 0.35, top-k 4, on the 16 questions in `eval/questions_nist.json` (11 answerable, 5 not in the document).
+**These numbers apply to this document and this question set only.** The questions and expected keywords/pages were written by the
+author and correctness is a keyword check, so treat them as a small sanity check, not a benchmark. Raw output: `docs/eval_live.json`.
 
 | Measure | Result |
 |---|---|
-| Overall accuracy (correct answers + correct refusals) | not yet measured |
-| Answerable questions answered correctly (expected keywords present) | not yet measured |
-| Citation on an expected page | not yet measured |
-| Questions not in the document correctly refused | not yet measured |
-| Questions not in the document wrongly answered | not yet measured |
+| Overall accuracy (correct answers + correct refusals) | 0.8125 (13 of 16) |
+| Answerable questions answered correctly (expected keywords present) | 8/11 |
+| Citation on an expected page | 8/11 |
+| False refusals (answerable, but the assistant said "not found") | 3 |
+| Wrong answers (answered, but expected keywords missing) | 0 |
+| Questions not in the document correctly refused | 5/5 |
+| Questions not in the document wrongly answered | 0 |
+| LLM or retrieval errors | 0 |
 
-**Retrieval-only check (no LLM, measured):** with the real local embedding model on the NIST PDF (180 chunks),
+**The 3 false refusals.** All three passed the similarity threshold and were refused by the LLM (`reason: llm_said_not_found`), so
+the code-level threshold did not block them. The run saved no retrieved chunks for refused questions, so the reasons below come from two sources:
+
+| Question | Best similarity (from the run) | What the data shows |
+|---|---|---|
+| n08: "What does GOVERN 1.6 say?" | 0.36 (just over the 0.35 threshold) | A short, label-style question with a low similarity. In the earlier retrieval-only check the expected page (28) was among the top 4 chunks, but not the best one. Why the LLM said "not found" is not recorded. |
+| n10: "What should happen if an AI system presents unacceptable negative risk?" | 0.74 | The similarity was high but the expected page (13) was **not** in the top 4 in the earlier retrieval-only check (pages 9 and 12 ranked higher), so the answer text was probably not among the chunks sent to the LLM. Not confirmed by the run file. |
+| n11: "At which lifecycle stage should risk management efforts ideally start?" | 0.64 | Same pattern: the expected pages (5, 15) were **not** in the top 4 in the retrieval-only check. Not confirmed by the run file. |
+
+In short: no wrong answer was produced and no unanswerable question was answered, but 3 of 11 answerable questions were refused,
+and for two of them retrieval, not the LLM, is the likely weak point. Nothing was tuned after seeing these results, and the run was not repeated.
+
+**Retrieval-only check (no LLM, measured before the live run):** with the real local embedding model on the NIST PDF (180 chunks),
 the author-labelled expected page was among the top 4 retrieved chunks for 9 of 11 answerable questions (top 8: 10 of 11).
 For the 5 questions that are not in the document, the best similarity was 0.30, 0.11, 0.36, 0.39 and 0.61, while
 answerable questions scored between 0.36 and 0.77. So at the default threshold of 0.35 the gate removes only the clearly
@@ -112,13 +130,14 @@ depend on the LLM's `found: false`. The threshold has not been tuned, to avoid f
 - Scanned or image-only PDFs have no text layer and are rejected with a clear message; OCR is not supported here.
 - Encrypted PDFs, files over `MAX_FILE_MB` and very long questions are rejected, not truncated.
 - Tables, figures and multi-column layouts are read as plain text by pypdf and may be garbled.
-- The similarity threshold is a blunt gate (see above); questions close to the document's topic but not answered in it rely on the LLM and have **not yet been measured**.
+- The similarity threshold is a blunt gate (see above); questions close to the document's topic but not answered in it rely on the LLM. In the live run the 3 such questions that passed the gate (similarity 0.36, 0.39, 0.61) were all refused by the LLM, but 3 questions is too few to say how reliable that is.
 - Only one document is indexed per run, and the index is rebuilt each run (a few seconds for a 48-page PDF).
 - The evaluation set is small (16 questions), written by the author, and keyword matching is a rough correctness test; results apply to that set only.
+- On the live run, 3 of 11 answerable questions were refused (false refusals); the similarity threshold was deliberately not tuned and the run was not repeated, so this behaviour is reported as-is and the numbers may be unstable across runs.
 - The Docker image has not been built or verified yet.
 - Only English text was tried.
 
 ## Next steps
-- Run the live evaluation and fill in the results table; use the per-question details to explain each miss.
+- Save the retrieved chunks for refused questions in the evaluation output, then investigate the 3 false refusals (retrieval depth, chunking, prompt) and re-measure.
 - Try a re-ranker or hybrid (keyword + vector) search for the questions where the right page is not in the top 4.
 - Build and verify the Docker image; add OCR for scanned PDFs.
